@@ -1,0 +1,22 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Learning Backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/srish-web/BackEnd.git"
+  },
+  "author": "Srishty Gupta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/srish-web/BackEnd/issues"
+  },
+  "homepage": "https://github.com/srish-web/BackEnd#readme",
+  "dependencies": {
+    "figlet": "^1.10.0"
+  }
+}
