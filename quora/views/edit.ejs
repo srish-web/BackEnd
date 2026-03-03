@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit posts</title>
+    <link rel="stylesheet" href="\styleForm.css">
+</head>
+<body>
+    <div class="post">
+        <h2>Edit Your posts</h2>
+        <p>Post id: <%= post.id %></p>
+        <p>Post Username: <%= post.username %></p>
+        <!-- we will use method override to change post request to patch request. -->
+        <form method="POST" action="/posts/<%=post.id%>?_method=PATCH">
+            <textarea name="content"><%= post.content %></textarea>
+            <button>Submit</button>
+        </form>
+    </div>
+    
+    
+</body>
+</html>

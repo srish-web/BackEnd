@@ -1,0 +1,97 @@
+ /* Base Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f7f8f9; /* Soft grey background */
+    color: #333;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+h2 {
+    color: #b92b27; /* Quora Red */
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+/* Post Card Styling */
+.post {
+    background: white;
+    width: 100%;
+    max-width: 600px;
+    margin: 15px 0;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #e6e6e6;
+    
+    /* Animation & Transition */
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+/* Hover Effects */
+.post:hover {
+    transform: translateY(-5px); /* Gentle lift */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-color: #2e69ff; /* Subtle blue highlight */
+}
+
+/* Form Container Styling */
+form {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    max-width: 400px;
+    margin: 40px auto;
+    border: 1px solid #e6e6e6;
+}
+
+/* Input & Textarea Styling */
+input[type="text"], 
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #dee0e1;
+    border-radius: 6px;
+    font-size: 1rem;
+    box-sizing: border-box; /* Ensures padding doesn't break width */
+    background-color: #f7f8f9;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+textarea {
+    height: 120px;
+    resize: vertical; /* Allows user to scale height only */
+}
+
+/* Focus Animation */
+input[type="text"]:focus, 
+textarea:focus {
+    border-color: #2e69ff;
+    background-color: #fff;
+    box-shadow: 0 0 0 4px rgba(46, 105, 255, 0.1); /* Soft blue glow */
+}
+
+/* Button Styling */
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #b92b27;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+button:hover {
+    background-color: #90211e;
+    transform: scale(1.02); /* Slight pop effect */
+}
+
+button:active {
+    transform: scale(0.98); /* "Click" depression effect */
+}
