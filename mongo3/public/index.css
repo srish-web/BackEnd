@@ -1,0 +1,329 @@
+/* styles.css */
+/* ==========================================================================
+   Chat Application Styling
+   Modern, responsive chat list with animations & hover effects
+   ========================================================================== */
+
+:root {
+    --bg-primary: #f0f2f5;
+    --bg-chat: #ffffff;
+    --text-dark: #1e293b;
+    --text-light: #64748b;
+    --accent: #6366f1;          /* indigo main color */
+    --accent-hover: #4f46e5;
+    --border: #e2e8f0;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+    --green-sender: #22c55e;
+    --orange-receiver: #f97316;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-dark);
+    min-height: 100vh;
+    padding: 1.5rem 1rem;
+    line-height: 1.5;
+}
+
+h3 {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 2rem;
+    letter-spacing: -0.025em;
+}
+
+.chat-list {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.chat {
+    background: var(--bg-chat);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.22s ease;
+    opacity: 0;
+    transform: translateY(15px);
+    animation: fadeInUp 0.5s forwards;
+}
+
+/* Staggered entrance animation */
+.chat:nth-child(1)  { animation-delay: 0.08s; }
+.chat:nth-child(2)  { animation-delay: 0.16s; }
+.chat:nth-child(3)  { animation-delay: 0.24s; }
+.chat:nth-child(4)  { animation-delay: 0.32s; }
+.chat:nth-child(5)  { animation-delay: 0.40s; }
+.chat:nth-child(n+6) { animation-delay: 0.48s; }
+
+.chat:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--accent);
+}
+
+.chat p {
+    margin: 0.5em 0;
+    font-size: 1rem;
+    color: var(--text-dark);
+}
+
+.chat p strong {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.msgbox {
+    background: #f1f5f9;
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin: 0.9rem 0;
+    border-left: 4px solid var(--accent);
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.msgbox:hover {
+    background: #e0f2fe;
+}
+
+.msgbox p {
+    margin: 0;
+    font-size: 1.05rem;
+    word-break: break-word;
+}
+
+/* Visual indicators for From / To */
+.chat p:first-child::before{
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+.receiver::before{
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 8px;
+    vertical-align: middle;
+    background: var(--orange-receiver);
+}
+
+.chat p:first-child::before {
+    background: var(--green-sender);    /* sender */
+}
+
+.chat p:last-child::before {
+    background: var(--orange-receiver); /* receiver */
+}
+
+/* The Fading Horizontal Line */
+.receiver::after {
+    content: "";
+    display: block;
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(to right, transparent, #ddd, transparent);
+    margin: 15px 0;
+}
+/* Time & Date Styling */
+.dateTime {
+    font-size: 0.75rem;
+    text-align: center;
+    color: #b0b3b8;
+}
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+    color: white;
+    background-color: var(--accent);          /* #6366f1 indigo */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 6px rgba(99, 102, 241, 0.2);
+    text-decoration: none;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hover & Focus states */
+.btn:hover {
+    background-color: var(--accent-hover);    /* #4f46e5 darker indigo */
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px rgba(99, 102, 241, 0.3);
+}
+
+.btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.4);
+}
+
+/* Active / clicked state */
+.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(99, 102, 241, 0.2);
+}
+
+/* Optional: subtle shine/ripple effect on hover */
+.btn::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s ease, height 0.6s ease;
+    pointer-events: none;
+}
+
+.btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Disabled state */
+.btn:disabled,
+.btn[disabled] {
+    background-color: #94a3b8;
+    cursor: not-allowed;
+    box-shadow: none;
+    opacity: 0.7;
+    transform: none;
+}
+
+/* Optional variants */
+
+.btn-outline {
+    background: transparent;
+    color: var(--accent);
+    border: 2px solid var(--accent);
+    box-shadow: none;
+}
+
+.btn-outline:hover {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+}
+
+.btn-small {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    border-radius: 6px;
+}
+
+.btn-large {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    border-radius: 10px;
+}
+.new-chat-form {
+    text-align: center;
+    margin: 1.5rem 0 2.5rem;
+}
+
+.new-chat-form .btn {
+    min-width: 160px;
+    font-weight: 600;
+}
+/* Placement in your layout */
+h3 + form {
+    text-align: center;
+    margin: 1.5rem 0 2.5rem;
+}
+
+h3 + form .btn {
+    min-width: 160px;
+}
+
+/* Fade-in + slide-up animation */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ───────────────────────────────────────────────
+   Responsive Design
+─────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+    body {
+        padding: 1rem 0.75rem;
+    }
+
+    h3 {
+        font-size: 1.6rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .chat {
+        padding: 1rem 1.25rem;
+        border-radius: 10px;
+    }
+
+    .msgbox {
+        padding: 0.9rem 1.1rem;
+    }
+
+    .msgbox p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h3 {
+        font-size: 1.45rem;
+    }
+
+    .chat p {
+        font-size: 0.95rem;
+    }
+
+    .msgbox p {
+        font-size: 0.97rem;
+    }
+
+    .chat-list {
+        gap: 0.9rem;
+    }
+}
